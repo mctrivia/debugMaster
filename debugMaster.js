@@ -19,9 +19,12 @@ var debugMaster=function() {
 		
 	});
 	
+	debugMaster.setOutput=function(type) {
+		outputType=type;
+	};
+	
 	debugMaster.log=function() {
 		if (outputType==1) {
-			
 			//console
 			switch (arguments.length) {
 				case 0:
