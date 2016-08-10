@@ -3,24 +3,31 @@ var debugMaster=function() {
 	var outputType=1;	//0=none,	1=console,	2=full screen
 	if (location.hash=="#test") {
 		outputType=2;
-		$(function() {
-			$('body').append('<div id="debugMaster">Debug Screen Loaded:</div>');
-			$("#debugMaster").show();
-		});
 	}
 
 	var loaded=false;
 	var que=[];
 	$(function() {
+		//add test div
+		$('body').append('<div id="debugMaster">Debug Screen Loaded:</div>');
+		
+		//show debug if type 2
+		if (outputType==2) {
+			$("#debugMaster").show();
+		}
+		
+		//run que
 		loaded=true;
 		for (let code of que) {
 			$("#debugMaster").append(code);
 		}
-		
 	});
 	
 	debugMaster.setOutput=function(type) {
 		outputType=type;
+		if (type==2) {
+			$("#debugMaster").show();
+		}
 	};
 	
 	debugMaster.log=function() {
