@@ -4,11 +4,21 @@ var debugMaster=function() {
 	if (location.hash=="#test") {
 		outputType=2;
 		$(function() {
-			$('body').append('<div id="debugMaster"></div>');
+			$('body').append('<div id="debugMaster">Debug Screen Loaded:</div>');
 			$("#debugMaster").show();
 		});
 	}
+
+	var loaded=false;
+	var que=[];
+	$(function() {
+		loaded=true;
+		for (let code of que) {
+			$("#debugMaster").append(code);
+		}
 		
+	});
+	
 	debugMaster.log=function() {
 		if (outputType==1) {
 			
@@ -50,8 +60,11 @@ var debugMaster=function() {
 			}			
 			code+='</div>';
 			
-			$("#debugMaster").append(code);
-			
+			if (loaded) {
+				$("#debugMaster").append(code);
+			} else {
+				que.push(code);
+			}
 		}
 	
 	};
