@@ -18,7 +18,7 @@ var debugMaster=function() {
 		
 		//run que
 		loaded=true;
-		for (let code of que) {
+		for (var code of que) {
 			$("#debugMaster").append(code);
 		}
 	});
@@ -63,7 +63,7 @@ var debugMaster=function() {
 			//print to full screen div
 			var code='';
 			code+='<div class="debugMasterEntry">';
-			for (let i=0;i<arguments.length;i++) {
+			for (var i=0;i<arguments.length;i++) {
 				code+='<div class="debugMasterValue">';
 				code+=	arguments[i];
 				code+='</div>';
